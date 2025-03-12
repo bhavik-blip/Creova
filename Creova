@@ -1,0 +1,88 @@
+// Import necessary dependencies
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Editor from "./pages/Editor";
+import Auth from "./pages/Auth";
+import Templates from "./pages/Templates";
+import Animations from "./pages/Animations";
+import Tools3D from "./pages/Tools3D";
+import DescriptionFeature from "./pages/DescriptionFeature";
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/editor" element={<Editor />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/templates" element={<Templates />} />
+        <Route path="/animations" element={<Animations />} />
+        <Route path="/3d-tools" element={<Tools3D />} />
+        <Route path="/description" element={<DescriptionFeature />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
+
+// AI Templates Component
+const Templates = () => {
+  const templates = [
+    { id: 1, name: "Social Media Post", preview: "📷" },
+    { id: 2, name: "Business Card", preview: "💼" },
+    { id: 3, name: "Presentation Slide", preview: "📊" },
+  ];
+
+  return (
+    <div>
+      <h2>AI-Generated Templates</h2>
+      <div style={{ display: "flex", gap: "10px" }}>
+        {templates.map((template) => (
+          <div key={template.id} style={{ border: "1px solid #ccc", padding: "10px" }}>
+            <p>{template.preview}</p>
+            <p>{template.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Animations Component
+const Animations = () => {
+  return (
+    <div>
+      <h2>Animations Feature</h2>
+      <p>Apply animations to your designs with ease!</p>
+    </div>
+  );
+};
+
+// 3D Tools Component
+const Tools3D = () => {
+  return (
+    <div>
+      <h2>3D Design Tools</h2>
+      <p>Create and manipulate 3D elements within your design.</p>
+    </div>
+  );
+};
+
+// Description Feature Component
+const DescriptionFeature = () => {
+  const [description, setDescription] = useState("");
+
+  return (
+    <div>
+      <h2>Describe Your Design Needs</h2>
+      <textarea
+        placeholder="Describe what you need..."
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        style={{ width: "100%", height: "100px" }}
+      ></textarea>
+    </div>
+  );
+};
